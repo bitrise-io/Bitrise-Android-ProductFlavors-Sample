@@ -2,7 +2,7 @@
 
 [![Bitrise status](https://app.bitrise.io/app/e6acd6634ef188c0/status.svg?token=ySsYqtCVgbkhizkjhlZnbQ&branch=main)](https://app.bitrise.io/app/e6acd6634ef188c0)
 
-This is a sample Android project that demonstrates a [Bitrise](https://bitrise.io) CI/CD setup with multiple product flavors. Build history is publicly available [here](https://app.bitrise.io/app/e6acd6634ef188c0#/builds).
+This is a sample Android project that demonstrates a [Bitrise](https://bitrise.io) CI/CD setup with multiple product flavors. The build history is publicly available [here](https://app.bitrise.io/app/e6acd6634ef188c0#/builds).
 
 ## Project setup and config
 
@@ -21,30 +21,30 @@ productFlavors {
 }
 ```
 
-In a real-world project the two endpoints would connect to two different API endpoints, so developers can use a staging build to test features without affecting production data.
+In a real-world project, the two endpoints would connect to two different API endpoints, so developers can use a staging build to test features without affecting production data.
 
-### Bitrise workflow
+### Bitrise Workflow
 
-#### `primary` workflow
+#### `primary` Workflow
 
+<details>
+<summary>Workflow Steps</summary>
+
+![Primary Workflow](docs/workflow-primary.png)
+</details>
+
+This Workflow is automatically run by Bitrise on every commit on every branch. __This builds and tests the `staging` flavor of the app.__
+
+#### `deploy` Workflow
 <details>
 <summary>Workflow steps</summary>
 
-![Primary workflow](docs/workflow-primary.png)
+![Deploy Workflow](docs/workflow-deploy.png)
 </details>
 
-This workflow is automatically run by Bitrise on every commit on every branch. __This builds and tests the `staging` flavor of the app.__
+This Workflow builds a release app __using the `live` flavor__ and signs it with the release signing config (signing key and passwords are stored as secrets on Bitrise). The signing is done by the **[Android Sign]**(https://www.bitrise.io/integrations/steps/sign-apk) Step, so there is no signing configuration defined in `build.gradle`.
 
-#### `deploy` workflow
-<details>
-<summary>Workflow steps</summary>
-
-![Deploy workflow](docs/workflow-deploy.png)
-</details>
-
-This workflow builds a release app __using the `live` flavor__ and signs it with the release signing config (signing key and passwords are stored as secrets on Bitrise). The signing is done by the Sign step, so there is no signing configuration defined in `build.gradle`.
-
-You can run this workflow manually on Bitrise, or you can set up an automatic trigger. Additionally, you can [configure auto-incrementing version numbers with an extra step](https://devcenter.bitrise.io/builds/build-numbering-and-app-versioning/).
+You can run this Workflow manually on Bitrise or you can set up an automatic trigger. Additionally, you can [configure auto-incrementing version numbers with an extra step](https://devcenter.bitrise.io/builds/build-numbering-and-app-versioning/).
 
 ## Advanced use cases
 
