@@ -21,7 +21,7 @@ productFlavors {
 }
 ```
 
-In a real-world project the two endpoints would connect to two different API endpoints, so developers can test features without affecting production data.
+In a real-world project the two endpoints would connect to two different API endpoints, so developers can use a staging build to test features without affecting production data.
 
 ### Bitrise workflow
 
@@ -42,7 +42,7 @@ This workflow is automatically run by Bitrise on every commit on every branch. _
 ![Deploy workflow](docs/workflow-deploy.png)
 </details>
 
-This workflow builds a release app and signs it with the release signing config (signing key and passwords are stored as secrets on Bitrise). The signing is done by the Sign step, so there is no signing configuration defined in `build.gradle`.
+This workflow builds a release app __using the `live` flavor__ and signs it with the release signing config (signing key and passwords are stored as secrets on Bitrise). The signing is done by the Sign step, so there is no signing configuration defined in `build.gradle`.
 
 You can run this workflow manually on Bitrise, or you can set up an automatic trigger. Additionally, you can [configure auto-incrementing version numbers with an extra step](https://devcenter.bitrise.io/builds/build-numbering-and-app-versioning/).
 
