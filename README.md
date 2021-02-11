@@ -2,7 +2,7 @@
 
 [![Bitrise status](https://app.bitrise.io/app/e6acd6634ef188c0/status.svg?token=ySsYqtCVgbkhizkjhlZnbQ&branch=main)](https://app.bitrise.io/app/e6acd6634ef188c0)
 
-This is a sample Android project that demonstrates a [Bitrise](https://bitrise.io) CI/CD setup with multiple product flavors. The build history is publicly available [here](https://app.bitrise.io/app/e6acd6634ef188c0#/builds).
+This is a sample Android project that demonstrates a [Bitrise](https://bitrise.io) CI/CD setup with multiple product flavors. Build history is publicly available [here](https://app.bitrise.io/app/e6acd6634ef188c0#/builds).
 
 ## Project setup and config
 
