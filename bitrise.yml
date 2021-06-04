@@ -21,7 +21,6 @@ workflows:
     - activate-ssh-key@4:
         run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
     - git-clone@4: {}
-    - cache-pull@2: {}
     - script@1:
         title: Do anything with Script step
     - install-missing-android-tools@2:
@@ -44,7 +43,6 @@ workflows:
         - module: $MODULE
         title: Unit Test (staging variant)
     - deploy-to-bitrise-io@1: {}
-    - cache-push@2: {}
   deploy-live:
     description: >
       ## How to get a signed APK
@@ -102,7 +100,6 @@ workflows:
     - activate-ssh-key@4:
         run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
     - git-clone@4: {}
-    - cache-pull@2: {}
     - install-missing-android-tools@2:
         inputs:
         - gradlew_path: $PROJECT_LOCATION/gradlew
@@ -129,13 +126,11 @@ workflows:
         inputs:
         - use_apk_signer: 'true'
     - deploy-to-bitrise-io@1: {}
-    - cache-push@2: {}
   deploy-staging:
     steps:
     - activate-ssh-key@4:
         run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
     - git-clone@4: {}
-    - cache-pull@2: {}
     - install-missing-android-tools@2:
         inputs:
         - gradlew_path: $PROJECT_LOCATION/gradlew
@@ -162,4 +157,3 @@ workflows:
         inputs:
         - use_apk_signer: 'true'
     - deploy-to-bitrise-io@1: {}
-    - cache-push@2: {}
